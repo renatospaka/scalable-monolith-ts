@@ -34,7 +34,7 @@ describe("Product Repository test", () => {
     const product = new Product(productProps);
 
     const productRepository = new ProductRepository();
-    await productRepository.add(product)
+    await productRepository.add(product);
 
     const productModel = await ProductModel.findOne({ where: { id: productProps.id.id } });
 
@@ -43,5 +43,25 @@ describe("Product Repository test", () => {
     expect(productProps.description).toEqual(productModel.description);
     expect(productProps.purchasePrice).toEqual(productModel.purchasePrice);
     expect(productProps.stock).toEqual(productModel.stock);
+  });
+
+  it("should find a product", async () => {
+    ProductModel.create({
+      id: "1",
+      name: "Product 1",
+      description: "Product 1 description",
+      purchasePrice: 100,
+      stock: 10,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
+    
+    const productRepository = new ProductRepository();
+    const product = await productRepository.find("1");
+    expect(product.id.id).toEqual("1");
+    expect(product.name).toEqual("Product 1");
+    expect(product.description).toEqual("Product 1 description");
+    expect(product.purchasePrice).toEqual(100);
+    expect(product.stock).toEqual(10);
   });
 });
