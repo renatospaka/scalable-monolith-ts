@@ -8,10 +8,10 @@ WORKDIR /home/node/app
 
 RUN npm install npm@8.15.1 --location=global && \
     npm install typescript --save-dev && \
-    npm install nodemon --location=global
+    npm install nodemon --save-dev
 
-# COPY package*.json ./
-# RUN npm install
+COPY package*.json ./
+RUN npm install
 
 USER node
 COPY . ./
