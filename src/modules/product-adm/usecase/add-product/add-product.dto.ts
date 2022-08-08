@@ -1,0 +1,17 @@
+export interface AddProductInputDTO {
+  id?: string;
+  name: string;
+  description: string;
+  purchasePrice: number;
+  stock: number;
+}
+
+export interface AddProductOutputDTO {
+  id: string;
+  name: string;
+  description: string;
+  purchasePrice: number;
+  stock: number;
+  updatedAt: Date;
+  createdAt: Date;
+}
