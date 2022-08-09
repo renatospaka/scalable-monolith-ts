@@ -1,5 +1,5 @@
 import UsecaseInterface from "../../@shared/usecase/usecase.interface";
-import ProductAdmFacadeInterface, { AddProductFacadeInputDTO, CheckStockFacadaInputDTO, CheckStockFacadaOutputDTO } from "./product-adm.interface";
+import ProductAdmFacadeInterface, { AddProductFacadeInputDTO, CheckStockFacadeInputDTO, CheckStockFacadeOutputDTO } from "./product-adm.interface";
 
 export interface UsecaseProps {
   addUsecase: UsecaseInterface;
@@ -21,7 +21,7 @@ export default class ProductAdmFacade implements ProductAdmFacadeInterface{
     // othewise, there would be a DTO transformation
   };
   
-  checkStock(input: CheckStockFacadaInputDTO): Promise<CheckStockFacadaOutputDTO> {
+  checkStock(input: CheckStockFacadeInputDTO): Promise<CheckStockFacadeOutputDTO> {
     return this._checkStockUsecase.execute(input);
     // due to the facade DTO is equal to the usecase DTO
     // othewise, there would be a DTO transformation
